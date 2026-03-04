@@ -1,0 +1,78 @@
+# =========================
+# BINARY FILES
+# =========================
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Build output
+/bin/
+/tmp/
+/build/
+/dist/
+
+# =========================
+# GO
+# =========================
+# Go workspace file
+go.work
+go.work.sum
+
+# Dependency directories (if you use vendor)
+vendor/
+
+# =========================
+# AIR (Auto Reload)
+# =========================
+.air.toml
+.air.*
+tmp/
+
+# =========================
+# ENV FILES (sensitive)
+# =========================
+.env
+.env.local
+.env.development
+.env.production
+
+# =========================
+# LOG FILES
+# =========================
+*.log
+logs/
+
+# =========================
+# IDE
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =========================
+# OS
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# COVERAGE / TEST
+# =========================
+coverage.out
+*.coverprofile
+
+# =========================
+# DATABASE FILES (local dev)
+# =========================
+*.sqlite
+*.db
+
+# =========================
+# DOCKER
+# =========================
+docker-compose.override.yml
