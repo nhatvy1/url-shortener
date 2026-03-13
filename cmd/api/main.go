@@ -4,8 +4,7 @@ import (
 	"crypto/hmac"
 	"crypto/sha256"
 	"encoding/binary"
-	"fmt"
-	"shortlink/internal/services"
+	"shortlink/internal/initialize"
 )
 
 const (
@@ -45,43 +44,5 @@ func GenerateShortCode(id int64) string {
 }
 
 func main() {
-	snowflake := services.NewSnowflake(1)
-	shortCode := GenerateShortCode(snowflake.Generate())
-	fmt.Println("Generated short code:", shortCode)
-
-	// redisClient, err := cache.NewRedisClient()
-	// if err != nil {
-	// 	fmt.Println("Failed to connect to Redis:", err)
-	// 	return
-	// }
-	// ctx := context.Background()
-	// redisBloom := cache.NewRedisBloom(redisClient)
-	// redisBloom.Reserve(ctx, "user_bloom_key", 0.01, 1200000)
-
-	// // 3. Tiến hành Add vào Bloom Filter
-	// total := 1_000_000
-
-	// for i := 0; i < total; i++ {
-	// 	id := "user_" + strconv.Itoa(i)
-
-	// 	err := redisBloom.Add(ctx, "user_bloom_key", id)
-	// 	if err != nil {
-	// 		fmt.Printf("Error adding %s: %v\n", id, err)
-	// 	}
-	// }
-
-	// // 4. Kiểm tra và in kết quả
-	// fmt.Println("--- Kiểm tra các user tồn tại (Kỳ vọng: true) ---")
-	// for _, id := range existingUserIDs {
-	// 	exists, _ := redisBloom.Exists(ctx, "user_bloom_key", id)
-	// 	fmt.Printf("User %s: %v\n", id, exists)
-	// }
-
-	// fmt.Println("--- Kiểm tra các user không tồn tại (Kỳ vọng: false) ---")
-	// for _, id := range missingUserIDs {
-	// 	exists, _ := redisBloom.Exists(ctx, "user_bloom_key", id)
-	// 	fmt.Printf("User %s: %v\n", id, exists)
-	// }
-
-	fmt.Println("Done")
+	initialize.Run()
 }

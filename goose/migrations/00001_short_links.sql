@@ -1,0 +1,13 @@
+-- +goose Up
+CREATE TABLE short_links (
+  id BIGSERIAL PRIMARY KEY,
+  short_code VARCHAR(32) NOT NULL UNIQUE,
+  original_url TEXT NOT NULL,
+  expires_at TIMESTAMP WITH TIME ZONE,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  is_active BOOLEAN DEFAULT TRUE
+);
+
+-- +goose Down
+DROP TABLE short_links;

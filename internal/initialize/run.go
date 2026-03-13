@@ -1,10 +1,20 @@
 package initialize
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+	di_container "shortlink/internal/di-container"
+)
 
 func Run() {
-	fmt.Println("Start")
-	defer fmt.Println("Deferred")
+	LoadConfig()
 
-	fmt.Println("End")
+	container, err := di_container.NewContainer()
+	if err != nil {
+		panic(fmt.Errorf("failed to initialize DI container: %w", err))
+	}
+
+	r := container.SetupRouter()
+
+	log.Fatal(r.Run(":8080"))
 }
