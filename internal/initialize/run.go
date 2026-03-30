@@ -4,9 +4,14 @@ import (
 	"fmt"
 	"log"
 	di_container "shortlink/internal/di-container"
+	"shortlink/internal/validations"
 )
 
 func Run() {
+	if err := validations.InitValidator(); err != nil {
+		fmt.Printf("validations error")
+	}
+
 	LoadConfig()
 
 	container, err := di_container.NewContainer()
@@ -16,5 +21,5 @@ func Run() {
 
 	r := container.SetupRouter()
 
-	log.Fatal(r.Run(":8080"))
+	log.Fatal(r.Run(":4000"))
 }

@@ -1,0 +1,27 @@
+server:
+  name: api-url-shortener
+  port: 7979
+database:
+  host: localhost
+  port: 5432
+  user: postgres
+  password: 123456
+  dbname: url_shortener
+  max_idle_conns: 10
+  max_open_conns: 20
+  conn_max_lifetime: 30
+redis:
+  host: localhost
+  port: 6379
+  password: ""
+  db: 0
+logger:
+  log_level: debug
+  file_log_name: app.log
+  max_backups: 5
+  max_age: 30
+  max_size: 10
+  compress: true
+secret_key:
+  access_token: QFRZJz2Va2
+  access_token_expire: 24

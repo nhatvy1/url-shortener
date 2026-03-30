@@ -8,8 +8,9 @@ import (
 
 func RegisterShortLinkRoutes(r *gin.RouterGroup, h *handlers.ShortLinkHandler) {
 
-	auth := r.Group("/short-link")
+	shortlink := r.Group("/short-link")
 	{
-		auth.POST("/create", h.CreateShortLink)
+		shortlink.POST("/", h.CreateShortLink)
+		shortlink.GET("/:code", h.GetOriginalURL)
 	}
 }
